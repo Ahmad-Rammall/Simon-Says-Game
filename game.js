@@ -26,3 +26,13 @@ function generateNextLevel() {
     playSound(btn.id);
   }, 1000);
 }
+
+function playSound(soundName) {
+  const sound = new Audio(`./sounds/${soundName}.mp3`);
+  sound.play();
+}
+
+function changeClassList(element, className) {
+  element.classList.add(className);
+  setTimeout(() => element.classList.remove(className), 150);
+}

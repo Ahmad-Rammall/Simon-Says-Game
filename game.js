@@ -47,3 +47,23 @@ document.querySelectorAll(".btn").forEach((btn) => {
     checkAnswer(clickedColors.length - 1);
   });
 });
+
+function checkAnswer(index) {
+  if (sequence[index] == clickedColors[index]) {
+    playSound(clickedColors[index]);
+    if (sequence.length == clickedColors.length) {
+      generateNextLevel();
+    }
+  } else {
+    changeClassList(body, "game-over");
+    playSound("wrong");
+    title.textContent = "Game Over! Press a Key To Restart.";
+    resetGame();
+  }
+}
+
+function resetGame() {
+  level = 0;
+  sequence = [];
+  gameStarted = false;
+}

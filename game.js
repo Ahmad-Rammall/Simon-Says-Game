@@ -36,3 +36,14 @@ function changeClassList(element, className) {
   element.classList.add(className);
   setTimeout(() => element.classList.remove(className), 150);
 }
+
+document.querySelectorAll(".btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (!gameStarted) return;
+    changeClassList(btn, "pressed");
+    clickedColors.push(btn.id);
+    console.log("sequence:" + sequence);
+    console.log("user: " + clickedColors);
+    checkAnswer(clickedColors.length - 1);
+  });
+});

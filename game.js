@@ -13,3 +13,16 @@ document.addEventListener("keypress", () => {
     generateNextLevel();
   }
 });
+
+function generateNextLevel() {
+  level++;
+  title.textContent = `Level ${level}`;
+  clickedColors = [];
+  let random = Math.floor(Math.random() * 4);
+  sequence.push(colorsArray[random]);
+  let btn = document.getElementById(colorsArray[random]);
+  setTimeout(() => {
+    changeClassList(btn, "pressed");
+    playSound(btn.id);
+  }, 1000);
+}
